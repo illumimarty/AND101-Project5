@@ -3,6 +3,7 @@ package com.example.project5
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var catNameView: TextView
     private lateinit var ratingTextView: TextView
     private lateinit var catImageView: ImageView
+    private lateinit var  fetchButton: Button
     var catImageUrl: String = ""
 
 
@@ -29,11 +31,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        initializeWidgets()
+        getCatInfo()
+    }
+
+    private fun initializeWidgets() {
         catNameView = findViewById(R.id.textView)
         ratingTextView = findViewById(R.id.textView2)
         catImageView = findViewById(R.id.imageView)
+        fetchButton = findViewById(R.id.button)
 
-        getCatInfo()
+        fetchButton.setOnClickListener() {
+            getCatInfo()
+        }
     }
 
     private fun getRandomNumber(max: Int): Int {
