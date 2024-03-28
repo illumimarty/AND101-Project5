@@ -36,6 +36,10 @@ class MainActivity : AppCompatActivity() {
         getCatInfo()
     }
 
+    private fun getRandomNumber(max: Int): Int {
+        return (0..max).random()
+    }
+
     private fun loadCatImage(url: Any) {
         Glide.with(this)
             .load(url)
@@ -49,10 +53,7 @@ class MainActivity : AppCompatActivity() {
         val params = RequestParams()
         headers["x-api-key"] = privateKey
 
-//        headers.put("x-api-key", privateKey)
-
-
-        client.get("https://api.api-ninjas.com/v1/cats?name=abyssinian", headers, params, object: JsonHttpResponseHandler() {
+        client.get("https://api.api-ninjas.com/v1/cats?min_weight=1", headers, params, object: JsonHttpResponseHandler() {
             override fun onFailure(
                 statusCode: Int,
                 headers: Headers?,
@@ -66,7 +67,10 @@ class MainActivity : AppCompatActivity() {
 
             override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON?) {
                 json?.let { unwrappedJSON ->
-                    val data = json.jsonArray.getJSONObject(0)
+
+                    val itemCount = json.jsonArray.length()
+                    val randomIndex = getRandomNumber(itemCount)
+                    val data = json.jsonArray.getJSONObject(randomIndex)
                     val catName = data["name"]
                     val rating = data["family_friendly"]
                     val imageUrl = data["image_link"]
