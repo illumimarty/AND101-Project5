@@ -3,7 +3,9 @@ package com.example.project5
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.RequestHeaders
 import com.codepath.asynchttpclient.RequestParams
@@ -13,11 +15,14 @@ import okhttp3.Headers
 
 import org.json.JSONArray
 import org.w3c.dom.Text
+import java.net.URL
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var catNameView: TextView
     private lateinit var ratingTextView: TextView
+    private lateinit var catImageView: ImageView
+    var catImageUrl: String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,9 +31,15 @@ class MainActivity : AppCompatActivity() {
 
         catNameView = findViewById(R.id.textView)
         ratingTextView = findViewById(R.id.textView2)
-
+        catImageView = findViewById(R.id.imageView)
 
         getCatInfo()
+    }
+
+    private fun loadCatImage(url: Any) {
+        Glide.with(this)
+            .load(url)
+            .into(catImageView)
     }
 
     private fun getCatInfo() {
@@ -58,8 +69,11 @@ class MainActivity : AppCompatActivity() {
                     val data = json.jsonArray.getJSONObject(0)
                     val catName = data["name"]
                     val rating = data["family_friendly"]
+                    val imageUrl = data["image_link"]
+
                     catNameView.text = "$catName"
                     ratingTextView.text = "Family Friendliness Rating: $rating"
+                    loadCatImage(imageUrl)
 
                     Log.d("cat", "response successful$data")
                     Log.d("cat", "response successful$catName")
