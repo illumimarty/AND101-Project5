@@ -4,11 +4,11 @@
 
 Submitted by: **Marthen Nodado**
 
-Time spent: **2** hours spent in total
+Time spent: **3** hours spent in total
 
 ## Summary
 
-**Catacomb** is an android app that **fetches how friendly a particular cat is, utilizing the API-Ninja Cat endpoint.**
+**Catacomb** is an android app that **fetches how family-friendly a particular cat is, utilizing the API-Ninja Cat endpoint.**
 
 If I had to describe this project in three (3) emojis, they would be: 🌐🐈🔘
 
@@ -19,8 +19,8 @@ If I had to describe this project in three (3) emojis, they would be: 🌐🐈�
 The following REQUIRED features are completed:
 
 - [x] Make an API call to an API of your choice using AsyncHTTPClient
-- [ ] Display at least three (3) pieces of data for each API entry retrieved
-- [ ] A working Button requests a new API entry and updates the data displayed
+- [x] Display at least three (3) pieces of data for each API entry retrieved
+- [x] A working Button requests a new API entry and updates the data displayed
 
 The following STRETCH features are implemented:
 
@@ -41,7 +41,7 @@ https://api-ninjas.com/api/cats
 
 Here's a video / GIF that demos all of the app's implemented features:
 
-<img src='https://i.imgur.com/PIuovbQ.gif' title='Video Demo' width='300' alt='Video Demo' />
+<img src='https://i.imgur.com/bvIqkGT.gif' title='Video Demo' width='300' alt='Video Demo' />
 
 GIF created with **your chosen GIF tool**
 
